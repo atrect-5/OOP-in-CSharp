@@ -1,3 +1,31 @@
+# Carpetas comprimidas
 *.zip
 
+# Notas
 Notas*
+
+# Archivos y carpetas de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Carpetas de compilación
+bin/
+obj/
+
+# Archivos de configuración locales
+*.userosscache
+*.sln.docstates
+
+# Archivos de paquetes NuGet
+*.nupkg
+packages/
+*.snupkg
+
+# Archivos de configuración de Rider/JetBrains
+.idea/
+*.sln.iml
+
+# Otros archivos temporales
+*.log
+*.tmp
