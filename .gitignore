@@ -26,6 +26,10 @@ packages/
 .idea/
 *.sln.iml
 
+# Archivos de diseño de XAML generados automáticamente
+*.g.cs
+*.g.i.cs
+
 # Otros archivos temporales
 *.log
 *.tmp
