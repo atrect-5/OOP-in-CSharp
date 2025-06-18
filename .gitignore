@@ -33,3 +33,4 @@ packages/
 # Otros archivos temporales
 *.log
 *.tmp
+.fake
