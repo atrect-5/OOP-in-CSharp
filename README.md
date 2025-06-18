@@ -34,7 +34,8 @@ Para ejecutar los ejemplos de este repositorio en tu computadora:
    ```
 
 3. **Abre la carpeta en Visual Studio Code o Visual Studio**  
-   Puedes usar cualquier editor compatible con C# y .NET.
+   Puedes usar cualquier editor compatible con C# y .NET.  
+   Aunque es recomendable unas Visual Studio para las practicas con WPF (Estos funcionan solo en Windows).
 
 4. **Ejecuta el proyecto que desees**  
    Desde la terminal, navega a la carpeta del proyecto y ejecuta:
