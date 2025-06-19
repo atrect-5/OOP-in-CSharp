@@ -126,10 +126,7 @@
                             <Button Content="Iniciar Sesión" 
                                     Margin="20,25,20,0" 
                                     FontSize="13"
-                                    Width="150" 
-                                    Background="#FF4EA7FF"
-                                    BorderBrush="#FF4EA7FF"
-                                    BorderThickness="1">
+                                    Width="150">
                             </Button>
                         </StackPanel>
                     </Grid>
