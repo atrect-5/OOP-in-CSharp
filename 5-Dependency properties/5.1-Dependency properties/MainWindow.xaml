@@ -1,0 +1,112 @@
+﻿<Window x:Class="_5._1_Dependency_properties.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_5._1_Dependency_properties"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- Estilo compartido para Button y CustomButton -->
+        <!-- En este caso, solo lo usara CustomButton, para ver como compartir estilos y como declararlos en el mismo elemento (como con Button) -->
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="Black" 
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="DarkCyan"/>
+                    <Setter Property="Background" Value="DarkMagenta"/>
+                    <Setter Property="FontFamily" Value="MV Boli"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="DarkBlue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Asi se pueden heredar estilos -->
+        <Style TargetType="{x:Type local:CustomButton}" BasedOn="{StaticResource MyButtonStyle}"/>
+    </Window.Resources>
+    <Grid>
+        <StackPanel
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center">
+            <local:CustomButton
+                ChangeBackground="False"
+                Width="200"
+                Height="50"
+                Style="{StaticResource MyButtonStyle}">
+                My Property
+            </local:CustomButton>
+
+            <Button
+                Height="50"
+                Width="200"
+                Content="Hello world" Margin="0,15,0,0"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center"
+                >
+                <!-- Se accede al estilo del boton -->
+                <Button.Style >
+                    <!-- Se crea un estilo y se indica que el target sera el Button -->
+                    <Style TargetType="Button">
+                        <!-- Si quieres poder modificar el color del fondo cuando hacer hover, tienes que reescribir el template del boton -->
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Background" Value="LightGray"/>
+                        <Setter Property="FontFamily" Value="Segoe UI"/>
+                        <!-- Se debe crear un template base para que el boton pueda cambiar el background al hacer hover o clic -->
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border 
+                                        Background="{TemplateBinding Background}" 
+                                        BorderBrush="Black" 
+                                        BorderThickness="1"
+                                        CornerRadius="5"
+                                        >
+                                        <ContentPresenter 
+                                            HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <!-- Se configuran las acciones que dispararan los estilos -->
+                        <Style.Triggers>
+                            <!-- Se indica que el "IsMouseOver = True" desencadenara este evento" -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Se indica a que propiedad se le va a asignar que valor -->
+                                <Setter Property="Foreground" Value="DarkCyan"></Setter>
+                                <Setter Property="Background" Value="DarkMagenta"></Setter>
+                                <Setter Property="FontFamily" Value="MV Boli"></Setter>
+                            </Trigger>
+                            <!-- Se indica que el "IsPressed = True" desencadenara este evento" -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <!-- Se indica a que propiedad se le va a asignar que valor -->
+                                <Setter Property="Foreground" Value="White"></Setter>
+                                <Setter Property="Background" Value="DarkBlue"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
